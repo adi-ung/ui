@@ -1,3 +1,6 @@
+// Internal Iguazio Jenkins shared library reference. Known internal
+// naming disclosure, intentionally retained — it is a functional CI dependency, not a
+// secret. Accepted as low-risk
 @Library('pipelinex@development') _
 import com.iguazio.pipelinex.DockerRepo
 
@@ -11,6 +14,7 @@ podTemplate(
     label: podLabel,
     containers: [
         containerTemplate(name: 'jnlp', image: 'jenkins/jnlp-slave:4.0.1-1', workingDir: workDir, resourceRequestCpu: '2000m', resourceLimitCpu: '2000m', resourceRequestMemory: '2048Mi', resourceLimitMemory: '2048Mi'),
+        // Internal Iguazio CI build image. Known internal reference, retained (functional), accepted low-risk — not a secret.
         containerTemplate(name: 'base-build', image: 'iguazioci/alpine-base-build:5540620c8c98efee4debfaa14e4c2a47d7110f22', workingDir: workDir, resourceRequestCpu: '2000m', resourceLimitCpu: '2000m', resourceRequestMemory: '2048Mi', resourceLimitMemory: '2048Mi', ttyEnabled: true, command: 'cat'),
     ],
     volumes: [
@@ -38,6 +42,7 @@ podTemplate(
                 }
                 
                 common.reportStage('update release status') {
+                    // Jenkins credential ID (name only, not the secret value; the token lives in Jenkins' credential store). Known internal reference, retained (functional), accepted low-risk.
                     withCredentials([
                         string(credentialsId: "iguazio-prod-git-user-token", variable: 'GIT_TOKEN')
                     ]) {
