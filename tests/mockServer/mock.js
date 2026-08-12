@@ -203,6 +203,10 @@ const secretKeyTemplate = {
 }
 
 // Mock constants
+// NOTE(ORIS-3685): The *.lab.iguazeng.com hostnames below (and matching values in
+// tests/mockServer/data/*.json) are internal Iguazio references. They are functional
+// mock-server routing constants, not secrets; changing them would break the mock
+// server and regression tests, so they are intentionally retained (accepted low-risk).
 const mockHome = process.cwd() + '/tests/mockServer'
 const mlrunIngress = '/mlrun-api-ingress.default-tenant.app.vmdev36.lab.iguazeng.com'
 const mlrunAPIIngress = `${mlrunIngress}/api/v1`

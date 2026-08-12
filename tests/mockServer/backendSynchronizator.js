@@ -22,6 +22,9 @@ const fs = require('fs-extra')
 const yaml = require('js-yaml')
 const lodash = require('lodash')
 
+// NOTE(ORIS-3685): The *.lab.iguazeng.com hostnames below are internal Iguazio
+// references used as functional mock-server data-sync URLs (not secrets). Intentionally
+// retained to keep the mock server/tests working (accepted low-risk).
 const baseMlRunUrl =
   'http://mlrun-api-ingress.dashboard.default-tenant.app.dev35.lab.iguazeng.com/api/'
 

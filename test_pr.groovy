@@ -1,3 +1,6 @@
+// Internal Iguazio Jenkins shared library reference. Known internal
+// naming disclosure, intentionally retained — functional CI dependency, not a secret.
+// Accepted as low-risk.
 @Library('pipelinex@DEVOPS-342_test_PR') _
 import com.iguazio.pipelinex.DockerRepo
 //testing the PR pipeline
@@ -31,6 +34,7 @@ podTemplate(
                 }
                 
                 common.reportStage('update pr status') {
+                    //Jenkins credential ID (name only, not the secret value; the token lives in Jenkins' credential store). Known internal reference, retained (functional), accepted low-risk.
                     withCredentials([
                         string(credentialsId: "iguazio-prod-git-user-token", variable: 'GIT_TOKEN')
                     ]) {
